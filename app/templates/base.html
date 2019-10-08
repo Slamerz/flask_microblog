@@ -8,11 +8,22 @@
     <title> Welcome to Microblog</title>
     {% endif %}
 </head>
-<body>
-    <div>
-        Microblog: <a href="/index">Home</a>
-    </div>
+    <body>
+        <div>
+            Microblog:
+            <a href="/index">Home</a>
+            <a href="/login">Login</a>
+        </div>
         <hr>
+        {% with messages = get_flashed_message() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         {% block content %}{% endblock %}
-</body>
+    </body>
 </html>
